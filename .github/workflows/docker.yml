@@ -10,8 +10,44 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         distro: ["", -alpine, -centos, -debian]
-        version: [ 8u332-8.62.0.19 ]
+        flavor: ["", -jre, -jre-headless ]
+        version:
+          - 18.0.2
+          - 18.0.1
+          - 18
+          - 17.0.4
+          - 17.0.3
+          - 17.0.2
+          - 17.0.1
+          - 15.0.8
+          - 15.0.7
+          - 15.0.6
+          - 15.0.5
+          - 13.0.12
+          - 13.0.11
+          - 13.0.10
+          - 13.0.9
+          - 11.0.16
+          - 11.0.15
+          - 11.0.14.1
+          - 11.0.13
+          - 8u342
+          - 8u332
+          - 8u322
+          - 8u312
+          - 7u352
+          - 6u119
+        exclude:
+          - version: 7u352
+            flavor: -jre
+          - version: 7u352
+            flavor: -jre-headless
+          - version: 6u119 
+            flavor: -jre
+          - version: 6u119 
+            flavor: -jre-headless
     steps:
       - run: docker run --rm azul/zulu-openjdk${{matrix.distro}}:${{matrix.version}} java -version
