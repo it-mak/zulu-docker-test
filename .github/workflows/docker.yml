@@ -12,7 +12,5 @@ jobs:
       matrix:
         distro: ["", -alpine, -centos, -debian]
         version: [ 8u332-8.62.0.19 ]
-         
-    runs-on: ubuntu-late
     steps:
       - run: docker run --rm azul/zulu-openjdk${{matrix.distro}}:${{matrix.version}}
