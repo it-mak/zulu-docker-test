@@ -8,6 +8,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         distro: ["", -alpine, -centos, -debian]
