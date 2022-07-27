@@ -1,0 +1,18 @@
+name: CI
+
+# Controls when the workflow will run
+on:
+  push:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  test:
+    strategy:
+      matrix:
+        distro: ["", -alpine, -centos, -debian]
+        version: [ 8u332-8.62.0.19 ]
+         
+    runs-on: ubuntu-late
+    steps:
+      - run: docker run --rm azul/zulu-openjdk${{matrix.distro}}:${{matrix.version}}
