@@ -14,4 +14,4 @@ jobs:
         distro: ["", -alpine, -centos, -debian]
         version: [ 8u332-8.62.0.19 ]
     steps:
-      - run: docker run --rm azul/zulu-openjdk${{matrix.distro}}:${{matrix.version}}
+      - run: docker run --rm azul/zulu-openjdk${{matrix.distro}}:${{matrix.version}} java -version
