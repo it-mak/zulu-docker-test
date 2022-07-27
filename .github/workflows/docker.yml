@@ -40,6 +40,6 @@ jobs:
           - version: 6u119 
             flavor: -jre-headless
     steps:
-      - run: docker run --rm \
-          azul/zulu-openjdk${{matrix.distro}}:${{matrix.version}}${{matrix.flavor}} \
+      - run: docker run --rm
+          azul/zulu-openjdk${{matrix.distro}}:${{matrix.version}}${{matrix.flavor}}
           java -version
