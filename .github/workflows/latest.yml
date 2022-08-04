@@ -18,4 +18,4 @@ jobs:
         latest_tag: [ "", -latest ] # FIXME: by README it could be only "-latest"
     steps:
       - uses: actions/checkout@v3
-      - run: ./test.sh test_latest ${{matrix.version}} ${{matrix.distro}} ${{matrix.flavor}}${{matrix.latest_tag}}
+      - run: ./test.sh test_latest ${{matrix.version}} "${{matrix.distro}}" "${{matrix.flavor}}${{matrix.latest_tag}}"

@@ -27,7 +27,7 @@ test_latest() {
 		}
 		END {
 			printf "%-12s: %s\n", "Docker Hub", docker_version
-			s = docker_version ~ ("build " v)
+			s = index(docker_version, "build " v)
 			print s ? "OK" : "FAIL"
 		       	exit !s
 		}
