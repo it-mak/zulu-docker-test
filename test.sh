@@ -17,7 +17,7 @@ disco2jdk() {
 }
 
 test_latest() {
-	docker run --rm azul/zulu-openjdk$2:$1$3 java -version 2>&1 | awk -v v=$(disco2jdk $(get_latest $1)) '
+	docker run --pull=always --rm azul/zulu-openjdk$2:$1$3 java -version 2>&1 | awk -v v=$(disco2jdk $(get_latest $1)) '
 		BEGIN {
 			printf "%-12s: %s\n", "DiscoAPI", v
 			s = 0

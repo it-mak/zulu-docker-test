@@ -15,7 +15,7 @@ jobs:
         distro: ["", -alpine, -centos, -debian]
         flavor: ["", -jre, -jre-headless ]
         version: [ 6, 7, 8, 11, 13, 15, 17, 18 ]
-        latest_tag: [ "", -latest ] # FIXME: by README it could be only "-latest"
+        latest_tag: [ "" ] # FIXME: by README it could be only "-latest"
     steps:
       - uses: actions/checkout@v3
       - run: ./test.sh test_latest ${{matrix.version}} "${{matrix.distro}}" "${{matrix.flavor}}${{matrix.latest_tag}}"
