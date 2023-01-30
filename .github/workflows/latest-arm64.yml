@@ -1,0 +1,42 @@
+name: Latest-arm64
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+  repository_dispatch:
+    types:
+      - webhook
+
+jobs:
+  test:
+    runs-on: ubuntu-latest 
+    strategy:
+      fail-fast: false
+      matrix:
+        distro: ["", -debian]
+        flavor: ["", -jre-headless ]
+        version: [ 11 ]
+        latest_tag: [ -arm ] # FIXME: by README it could be only "-latest"
+
+        exclude:
+          - version: 7
+            flavor: -jre
+          - version: 7
+            flavor: -jre-headless
+          - version: 6
+            flavor: -jre
+          - version: 6
+            flavor: -jre-headless
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Run tests
+      uses: uraimo/run-on-arch-action@v2
+      with:
+        arch: aarch64
+        # distro: ubuntu20.04
+        install: apt-get update -q -y && apt-get install -q -y jq curl && curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
+        run: ./test.sh test_latest ${{matrix.version}} "${{matrix.distro}}" "${{matrix.flavor}}${{matrix.latest_tag}}"
