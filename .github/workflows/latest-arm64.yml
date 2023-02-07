@@ -15,9 +15,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro: ["", -debian]
-        flavor: ["", -jre-headless ]
-        version: [ 11 ]
+        distro: ["", -alpine, -centos, -debian]
+        flavor: ["", -jre, -jre-headless ]
+        version: [ 6, 7, 8, 11, 13, 15, 17, 18 ]
         latest_tag: [ "" ] # FIXME: by README it could be only "-latest"
 
         exclude:
