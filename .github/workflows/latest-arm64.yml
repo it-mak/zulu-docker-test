@@ -18,7 +18,7 @@ jobs:
         distro: ["", -debian]
         flavor: ["", -jre-headless ]
         version: [ 11 ]
-        latest_tag: [ -arm ] # FIXME: by README it could be only "-latest"
+        latest_tag: [ "" ] # FIXME: by README it could be only "-latest"
 
         exclude:
           - version: 7
