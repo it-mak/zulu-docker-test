@@ -45,7 +45,7 @@ get_arch() {
 test_latest() {
 	# regex 111.111.111+111
 	cmd="java --version 2>&1 | tail -n 1 | grep -oE '[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\+[[:digit:]]{1,3}'"
-	docker_version=$(docker run --pull=always --rm azul/zulu-openjdk$2:$1$3 sh -c "$cmd")
+	docker_version=$(docker run --pull=always --platform linux/arm64 --rm azul/zulu-openjdk$2:$1$3 sh -c "$cmd")
 	if [ $? -eq 0 ] 
 	then
 		disco2jdk $(get_latest $1)
