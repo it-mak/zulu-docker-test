@@ -17,7 +17,7 @@ jobs:
       matrix:
         distro: ["", -alpine, -centos, -debian]
         flavor: ["", -jre, -jre-headless ]
-        version: [ 6, 7, 8, 11, 13, 15, 17, 18, 19, 20 ]
+        version: [ 6, 7, 8, 11, 13, 15, 17, 18, 19, 20, 21 ]
         latest_tag: [ "" ] # FIXME: by README it could be only "-latest"
 
         exclude:
